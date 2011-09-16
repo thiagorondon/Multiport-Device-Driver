@@ -1,0 +1,53 @@
+# Multiports/PCI 
+# Installation Scripts 2001. 8.
+# SystemBase Co., Ltd.
+
+CLS=`clear` > /dev/null 2>&1
+
+####### begin 
+
+./Remove
+
+echo $CLS
+echo -e "====================================================="
+echo -e "  Multiports/PCI Device Driver ver 3.0  Installation    "
+echo -e "    revision date: 2009-06-22                        "
+echo -e "====================================================="
+
+make multiport.o > /dev/null 2>&1
+
+sleep 1
+
+/sbin/insmod multiport.o
+
+#gcc -o bdcfg bdcfg.s 2>&1
+
+./bdcfg > /dev/null 2>&1
+
+#rm -f bdcfg
+
+cp /etc/inittab /etc/inittab.00
+grep -v 'ttyMP' < /etc/inittab.00 > /etc/inittab 
+rm -f /etc/inittab.00
+ed /etc/inittab < Node > /dev/null 2>&1
+rm -f Node
+
+CURR_PATH="/sbin/insmod `pwd`/multiport.o"
+echo "$" > APL
+echo "a">> APL
+echo $CURR_PATH >> APL
+echo "." >> APL
+echo "w" >> APL
+echo "q" >> APL
+cp /etc/rc.d/rc.local /etc/rc.d/rc.local.org
+grep -v '$CURR_PATH' < /etc/rc.d/rc.local.org > /etc/rc.d/rc.local
+rm -f /etc/rc.d/rc.local.org
+ed /etc/rc.d/rc.local < APL > /dev/null 2>&1
+rm -f APL
+
+if [ -f "/proc/tty/driver/multiports" ]
+then
+	cat /proc/tty/driver/multiports
+fi
+
+#Install end

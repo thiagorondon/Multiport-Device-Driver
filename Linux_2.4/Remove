@@ -1,0 +1,30 @@
+# Multiports/PCI 
+# Remove script
+
+CLS=`clear` > /dev/null 2>&1
+
+echo $CLS
+echo -e "\nRemove Multiports/PCI Driver..!!"
+
+/sbin/rmmod multiport > /dev/null 2>&1
+
+echo " "
+echo -n "remove node(/etc/inittab) ....."
+cp /etc/inittab /etc/inittab.old
+grep -v 'ttyMP' < /etc/inittab.old > /etc/inittab
+rm -f /etc/inittab.old
+echo -e "done"
+
+echo -n "remove device(/dev)....."
+rm -f /dev/ttyMP*
+echo -e "done"
+
+echo -n "modify /etc/rc.d/rc.local....."
+cp  /etc/rc.d/rc.local /etc/rc.d/rc.local.org
+grep -v 'multiport.o' < /etc/rc.d/rc.local.org > /etc/rc.d/rc.local
+rm -f /etc/rc.d/rc.local.org
+echo -e "done"
+
+rm -f multiport.o
+rm -f multi.o
+

@@ -1,0 +1,45 @@
+
+* Release note *
+
+	
+Before installation, make sure system with c compiler and kerenl development package.
+
+
+	
+Ver 1.00
+		
+Test RedHat 9.0	    ( kernel 2.4.20 )
+		
+Test Fedora core  1 ( kernel 2.4.22 )
+		
+Test Fedora core  4 ( kernel 2.6.11 )
+		
+Test Fedora core  5 ( kernel 2.6.15 )
+		
+Test Fedora core  6 ( kernel 2.6.18 )
+		
+Test Fedora core  7 ( kernel 2.6.21 )
+		
+Test Fedora core  8 ( kernel 2.6.23 )
+		
+Test Fedora core  9 ( kernel 2.6.25 )
+		
+Test Fedora core 10 ( kernel 2.6.27 )
+		
+Test Fedora core 11 ( kernel 2.6.29 )
+		
+Test Fedora core 12 ( kernel 2.6.31 )
+		
+Test RedHat EL 5    ( kernel 2.6.18-8.el5 )
+	
+
+Ver 1.1
+                
+Test Cent OS 5.4 ( kernel 2.6.18-164.el5 )
+        
+
+Ver 1.12
+                
+Test Ubuntu 9.10 ( kernel 2.6.31-14 )
+                
+Test OpenSuse 11.2 ( kernel 2.6.31-5 )
